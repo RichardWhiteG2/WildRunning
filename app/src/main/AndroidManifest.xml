@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WildRunning">
         <activity
+            android:name=".TermsActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait">

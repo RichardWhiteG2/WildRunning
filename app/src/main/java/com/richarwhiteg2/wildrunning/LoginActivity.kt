@@ -40,6 +40,24 @@ class LoginActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         mAuth = FirebaseAuth.getInstance()
     }
+
+    //Para saber si hay un usuario en la app
+    public override fun onStart() {
+        super.onStart()
+
+        val currentUser = FirebaseAuth.getInstance().currentUser //obtiene datos del usuario actual
+        if (currentUser != null)  goHome(currentUser.email.toString(), currentUser.providerId)
+
+    }
+
+    //para que al dar atras desde adentro de la app no regrese al login
+    override fun onBackPressed() {
+        val startMain = Intent(Intent.ACTION_MAIN)
+        startMain.addCategory(Intent.CATEGORY_HOME)
+        startMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(startMain)
+    }
+
     fun login(view: View) {
         loginUser()
     }
@@ -65,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
 
         useremail = email
         providerSession = provider
-
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
@@ -91,5 +108,14 @@ class LoginActivity : AppCompatActivity() {
                 else Toast.makeText(this, "Error, algo ha salido mal", Toast.LENGTH_SHORT).show()
             }
     }
-
+    //para ir a los terminos y condiciones
+    fun goTerms(v: View){
+        val intent = Intent(this, TermsActivity::class.java)
+        startActivity(intent)
+    }
+    cuando olvidad la contraseña
+    fun forgotPassword(view: View) {
+        //startActivity(Intent(this, ForgotPasswordActivity::class.java))
+        resetPassword()
+    }
 }
