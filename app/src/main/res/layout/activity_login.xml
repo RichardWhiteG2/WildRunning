@@ -23,6 +23,9 @@
         android:textSize="15sp"
         android:textColor="@color/orange"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/textInputCustom"
+        >
     <EditText
         android:id="@+id/etEmail"
         style="@style/viewCustom"
@@ -32,19 +35,16 @@
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/gray_dark"
         
         />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/textInputCustom"
         app:passwordToggleEnabled="true"
-        android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"
+        app:passwordToggleTint="@color/white"
         >
-
-
         <EditText
             android:id="@+id/etPassword"
             style="@style/viewCustom"

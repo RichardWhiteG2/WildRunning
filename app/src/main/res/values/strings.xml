@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">WildRunning</string>
 
-    <string name="email">Email</string>
+    <string name="email">Correo</string>
     <string name="password">Contraseña</string>
     <string name="forgotPassword">Olvidaste tu contraseña?</string>
     <string name="login">Iniciar sesión</string>
