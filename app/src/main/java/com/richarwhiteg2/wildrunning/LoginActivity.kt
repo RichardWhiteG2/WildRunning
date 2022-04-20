@@ -4,14 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.EditText
-import android.widget.LinearLayout
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.properties.Delegates
 import android.view.View
-import android.widget.CheckBox
-import android.widget.Toast
+import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import com.google.firebase.firestore.FirebaseFirestore
+import com.richarwhiteg2.wildrunning.ValidateEmail.ValidateEmail.Companion.isEmail
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -40,6 +40,11 @@ class LoginActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         mAuth = FirebaseAuth.getInstance()
+
+        //para validar emeil y contraseña es valido en el formato
+        manageButtonLogin()
+        etEmail.doOnTextChanged { text, start, before, count ->  manageButtonLogin() }
+        etPassword.doOnTextChanged { text, start, before, count ->  manageButtonLogin() }
     }
 
     //Para saber si hay un usuario en la app
@@ -57,6 +62,23 @@ class LoginActivity : AppCompatActivity() {
         startMain.addCategory(Intent.CATEGORY_HOME)
         startMain.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(startMain)
+    }
+
+    //para validar emeil y contraseña es valido en el formato si no es valido el boton iniciar sesión no se activa
+    private fun manageButtonLogin(){
+        var tvLogin = findViewById<TextView>(R.id.tvLogin)
+        email = etEmail.text.toString()
+        password = etPassword.text.toString()
+
+        if (TextUtils.isEmpty(password) || !isEmail(email)){  //si la contraseña esta vacia se deshabilita el login o si el imail no es correcto
+
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.gray))
+            tvLogin.isEnabled = false
+        }
+        else{
+            tvLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
+            tvLogin.isEnabled = true
+        }
     }
 
     fun login(view: View) {
