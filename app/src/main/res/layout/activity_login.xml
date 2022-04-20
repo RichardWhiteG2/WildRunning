@@ -22,6 +22,7 @@
         android:text="@string/invitation"
         android:textSize="15sp"
         android:textColor="@color/orange"/>
+
     <EditText
         android:id="@+id/etEmail"
         style="@style/viewCustom"
@@ -31,16 +32,30 @@
         android:layout_marginTop="0dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/white"
+        
+        />
 
-    <EditText
-        android:id="@+id/etPassword"
-        style="@style/viewCustom"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textColor="@color/white"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
         android:textColorHint="@color/white"
-        android:backgroundTint="@color/white"/>
+        android:backgroundTint="@color/white"
+        >
+
+
+        <EditText
+            android:id="@+id/etPassword"
+            style="@style/viewCustom"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:backgroundTint="@color/gray_dark"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/tvLogin"
