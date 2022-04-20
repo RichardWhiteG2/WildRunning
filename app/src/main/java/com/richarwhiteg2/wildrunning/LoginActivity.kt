@@ -3,6 +3,7 @@ package com.richarwhiteg2.wildrunning
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.EditText
 import android.widget.LinearLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -113,9 +114,22 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, TermsActivity::class.java)
         startActivity(intent)
     }
-    cuando olvidad la contraseña
+    //cuando olvidad la contraseña
     fun forgotPassword(view: View) {
         //startActivity(Intent(this, ForgotPasswordActivity::class.java))
         resetPassword()
+    }
+    //para restablecer contraseña
+    private fun resetPassword(){
+        var e = etEmail.text.toString()
+
+        if (!TextUtils.isEmpty(e)){
+            mAuth.sendPasswordResetEmail(e)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) Toast.makeText(this, "Email Enviado a $e", Toast.LENGTH_SHORT).show()
+                        else Toast.makeText(this, "No se encontró el usuario con este correo", Toast.LENGTH_SHORT).show()
+                }
+        }
+        else Toast.makeText(this, "Indica un email", Toast.LENGTH_SHORT).show()
     }
 }
