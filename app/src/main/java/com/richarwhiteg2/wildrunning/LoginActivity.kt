@@ -10,6 +10,10 @@ import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import com.richarwhiteg2.wildrunning.ValidateEmail.ValidateEmail.Companion.isEmail
 import java.text.SimpleDateFormat
@@ -29,6 +33,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var lyTerms: LinearLayout  //terminos y condiciones
 
     private lateinit var mAuth: FirebaseAuth //autenticación de base de datos FIREBASE
+
+    private var RESULT_CODE_GOOGLE_SIGN_IN = 100 //INICIAR SESION CON GOOGLE
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -153,5 +159,51 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
         else Toast.makeText(this, "Indica un email", Toast.LENGTH_SHORT).show()
+    }
+
+    //Para iniciar sesión con google
+    fun callSignInGoogle (view:View){
+        signInGoogle()
+    }
+    private fun signInGoogle(){
+        // Configure Google Sign In
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        var googleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient.signOut()    //cierra cualquier sesión anterior abierta
+
+        startActivityForResult(googleSignInClient.signInIntent, RESULT_CODE_GOOGLE_SIGN_IN)
+
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RESULT_CODE_GOOGLE_SIGN_IN) {
+
+            try {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+
+                if (account != null){
+                    email = account.email!!
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    mAuth.signInWithCredential(credential).addOnCompleteListener{
+                        if (it.isSuccessful) goHome(email, "Google")
+                        else Toast.makeText(this, "Error en la conexión con Google", Toast.LENGTH_SHORT)
+
+                    }
+                }
+
+
+            } catch (e: ApiException) {
+                Toast.makeText(this, "Error en la conexión con Google", Toast.LENGTH_SHORT)
+            }
+        }
+
     }
 }
