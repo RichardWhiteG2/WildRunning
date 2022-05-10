@@ -18,5 +18,11 @@
     <include
         layout="@layout/app_bar_main"
         />
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        app:menu="@menu/activity_main_drawer"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
