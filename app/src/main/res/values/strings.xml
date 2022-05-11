@@ -32,4 +32,7 @@
     <string name="nav_hi">Quien mueve las piernas mueve el corazon, muevete</string>
     <string name="user">blabla@wildrunning.com</string>
 
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
 </resources>
