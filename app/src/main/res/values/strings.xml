@@ -29,4 +29,7 @@
     <string name="menu_signout">Cerrar Sesión</string>
     <string name="menu_offercourse">¿Quieres aprender lo que sea? Entra aquí!</string>
 
+    <string name="nav_hi">Quien mueve las piernas mueve el corazon, muevete</string>
+    <string name="user">blabla@wildrunning.com</string>
+
 </resources>
