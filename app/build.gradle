@@ -61,6 +61,10 @@ dependencies {
     //Seekbar circular
     implementation 'me.tankery.lib:circularSeekBar:1.3.2'
 
+    implementation 'androidx.drawerleyout:drawerlayout:1.1.1'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+
+
 
 
 }
