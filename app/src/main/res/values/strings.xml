@@ -38,4 +38,19 @@
 
     <string name="bar_title_record">Tomaquetomatá</string>
 
+    <string name="orderby_dateZA">Fecha (Recientes primero)</string>
+    <string name="orderby_durationZA">Duración (Mayores primero)</string>
+    <string name="orderby_distanceZA">Distancia (Mayores primero)</string>
+    <string name="orderby_avgspeedZA">Vel. Prom.(Mayores primero)</string>
+    <string name="orderby_maxspeedZA">Vel. Max.(Mayores primero)</string>
+
+    <string name="orderby_dateAZ">Fecha (Antiguos primero)</string>
+    <string name="orderby_durationAZ">Duración (Menores primero)</string>
+    <string name="orderby_distanceAZ">Distancia (Menores primero)</string>
+    <string name="orderby_avgspeedAZ">Vel. Prom.(Menores primero)</string>
+    <string name="orderby_maxspeedAZ">Vel. Max.(Menores primero)</string>
+
+
+
+
 </resources>
