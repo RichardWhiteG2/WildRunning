@@ -36,4 +36,6 @@
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
 
+    <string name="bar_title_record">Tomaquetomatá</string>
+
 </resources>
