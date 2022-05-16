@@ -2110,7 +2110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:backgroundTint="@color/white"
-                    android:src="drawable/ic_menu_camara"
+                    android:src="@android:drawable/ic_menu_camera"
                     app:maxImageSize="40dp"
                     android:onClick="takePicture"/>
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
