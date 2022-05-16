@@ -1825,7 +1825,7 @@
                                             android:fontFamily="sans-serif-light"
                                             android:text="1782"
                                             android:drawablePadding="3dp"
-                                            android:drawableStart="@mipmap/min"
+                                            android:drawableStart="@drawable/min"
                                             android:textSize="14sp"
                                             android:textAlignment="textEnd"
                                             android:textColor="@color/gray_light"/>
